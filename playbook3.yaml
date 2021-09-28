@@ -9,6 +9,9 @@
     destin_file : /var/www/html
 
   tasks :
+  - debug :
+    msg: "Vladelec etogo servera {{owner}}"
+
   - name : Install Apache Web Server
     yum : name=httpd state=latest
 
