@@ -1,0 +1,12 @@
+// установке веб сервера на линукс амазон
+---
+- name : Install default Apache Web Server
+  hosts : all
+  become : yes
+
+  tasks :
+  - name : Install Apache Web Server
+    yum : name=httpd state=latest
+
+  - name : Start Apache end Enable it on boot
+    service : name=httpd state=started enabled=yes

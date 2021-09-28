@@ -1,0 +1,10 @@
+// ping серверов
+---
+- name : Test conention to my servers
+  hosts : all
+  become : yes
+
+  tasks :
+
+  - name : Ping my servers
+    ping :

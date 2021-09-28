@@ -1,0 +1,24 @@
+//
+---
+- name : Install Apache and Upload my web page
+  hosts : all
+  become : yes
+
+  vars :
+    source_file : /MyWebSite/index.html
+    destin_file : /var/www/html
+
+  tasks :
+  - name : Install Apache Web Server
+    yum : name=httpd state=latest
+
+  - name : Comy my home page to servers
+    copy : src={{ source_file }} dest={{ destin_file }} mode=0555
+    notify : Restart Apache
+
+  - name : Start Web Service it enable on boot
+    service : name=httpd state=started enabled=yes
+
+  hendlers :
+  - name : Restart Apache
+    service : name=httpd state=restarted
